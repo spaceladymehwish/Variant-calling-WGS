@@ -1,0 +1,42 @@
+##fileformat=VCFv4.2
+##snippy="snippy-vcf_extract_subs snps.filt.vcf"
+##fileformat=VCFv4.2
+##FILTER=<ID=PASS,Description="All filters passed">
+##fileDate=20240516
+##source=freeBayes v1.3.6
+##reference=reference/ref.fa
+##contig=<ID=CP000819,length=4629812>
+##phasing=none
+##commandline="freebayes -p 2 -P 0 -C 2 -F 0.05 --min-coverage 1 --min-repeat-entropy 1.0 -q 13 -m 60 --strict-vcf -f reference/ref.fa snps.bam --region CP000819:0-37063"
+##INFO=<ID=DP,Number=1,Type=Integer,Description="Total read depth at the locus">
+##INFO=<ID=RO,Number=1,Type=Integer,Description="Count of full observations of the reference haplotype.">
+##INFO=<ID=AO,Number=A,Type=Integer,Description="Count of full observations of this alternate haplotype.">
+##INFO=<ID=TYPE,Number=A,Type=String,Description="The type of allele, either snp, mnp, ins, del, or complex.">
+##FORMAT=<ID=GT,Number=1,Type=String,Description="Genotype">
+##FORMAT=<ID=DP,Number=1,Type=Integer,Description="Read Depth">
+##FORMAT=<ID=RO,Number=1,Type=Integer,Description="Reference allele observation count">
+##FORMAT=<ID=QR,Number=1,Type=Integer,Description="Sum of quality of the reference observations">
+##FORMAT=<ID=AO,Number=A,Type=Integer,Description="Alternate allele observation count">
+##FORMAT=<ID=QA,Number=A,Type=Integer,Description="Sum of quality of the alternate observations">
+##bcftools_viewVersion=1.20+htslib-1.20
+##bcftools_viewCommand=view --include 'FMT/GT="1/1" && QUAL>=100 && FMT/DP>=1 && (FMT/AO)/(FMT/DP)>=0' snps.raw.vcf; Date=Thu May 16 14:49:00 2024
+##bcftools_annotateVersion=1.20+htslib-1.20
+##bcftools_annotateCommand=annotate --remove ^INFO/TYPE,^INFO/DP,^INFO/RO,^INFO/AO,^INFO/AB,^FORMAT/GT,^FORMAT/DP,^FORMAT/RO,^FORMAT/AO,^FORMAT/QR,^FORMAT/QA,^FORMAT/GL; Date=Thu May 16 14:49:00 2024
+##INFO=<ID=OLDVAR,Number=R,Type=String,Description="Original REF,ALT before decomposition">
+#CHROM	POS	ID	REF	ALT	QUAL	FILTER	INFO	FORMAT	SRR2584863
+CP000819	9972	.	T	G	109.87	.	TYPE=snp;DP=4;RO=0;AO=4	GT:DP:RO:AO:QR:QA	1/1:4:0:4:0:158
+CP000819	281923	.	G	T	310.955	.	TYPE=snp;DP=10;RO=0;AO=10	GT:DP:RO:AO:QR:QA	1/1:10:0:10:0:370
+CP000819	648692	.	C	T	285.198	.	TYPE=snp;DP=10;RO=0;AO=10	GT:DP:RO:AO:QR:QA	1/1:10:0:10:0:349
+CP000819	1331794	.	C	A	279.213	.	TYPE=snp;DP=10;RO=0;AO=10	GT:DP:RO:AO:QR:QA	1/1:10:0:10:0:337
+CP000819	1733343	.	G	A	348.335	.	TYPE=snp;DP=11;RO=0;AO=11	GT:DP:RO:AO:QR:QA	1/1:11:0:11:0:413
+CP000819	2446984	.	A	C	643.506	.	TYPE=snp;DP=20;RO=0;AO=20	GT:DP:RO:AO:QR:QA	1/1:20:0:20:0:749
+CP000819	2665639	.	A	T	624.234	.	TYPE=snp;DP=19;RO=0;AO=19	GT:DP:RO:AO:QR:QA	1/1:19:0:19:0:721
+CP000819	2999330	.	G	A	508.861	.	TYPE=snp;DP=16;RO=0;AO=16	GT:DP:RO:AO:QR:QA	1/1:16:0:16:0:598
+CP000819	3339313	.	A	C	291.521	.	TYPE=snp;DP=10;RO=0;AO=10	GT:DP:RO:AO:QR:QA	1/1:10:0:10:0:345
+CP000819	3401754	.	C	A	417.642	.	TYPE=snp;DP=14;RO=0;AO=14	GT:DP:RO:AO:QR:QA	1/1:14:0:14:0:489
+CP000819	3481820	.	A	G	265.289	.	TYPE=snp;DP=9;RO=0;AO=9	GT:DP:RO:AO:QR:QA	1/1:9:0:9:0:324
+CP000819	3488669	.	A	C	392.232	.	TYPE=snp;DP=13;RO=0;AO=13	GT:DP:RO:AO:QR:QA	1/1:13:0:13:0:469
+CP000819	3909807	.	G	T	314.739	.	TYPE=snp;DP=10;RO=0;AO=10	GT:DP:RO:AO:QR:QA	1/1:10:0:10:0:378
+CP000819	4100183	.	A	G	501.235	.	TYPE=snp;DP=16;RO=0;AO=16	GT:DP:RO:AO:QR:QA	1/1:16:0:16:0:598
+CP000819	4201958	.	A	C	326.604	.	TYPE=snp;DP=11;RO=0;AO=11	GT:DP:RO:AO:QR:QA	1/1:11:0:11:0:391
+CP000819	4616538	.	A	C	269.478	.	TYPE=snp;DP=9;RO=0;AO=9	GT:DP:RO:AO:QR:QA	1/1:9:0:9:0:322

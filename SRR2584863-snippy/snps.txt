@@ -1,0 +1,9 @@
+DateTime	2024-05-16T14:48:27
+ReadFiles	/home4/m.kayani4/Masood/Reads/SRR2584863_1.trim.sub.fastq /home4/m.kayani4/Masood/Reads/SRR2584863_2.trim.sub.fastq
+Reference	/home4/m.kayani4/Masood/Reference/Ecoli_genbank.gb
+ReferenceSize	4629812
+Software	snippy 4.6.0
+Variant-DEL	1
+Variant-INS	3
+Variant-SNP	16
+VariantTotal	20

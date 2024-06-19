@@ -1,0 +1,119 @@
+### echo snippy 4.6.0
+### cd /home4/m.kayani4/Masood
+
+### /home4/m.kayani4/miniforgeNew/envs/snippy/bin/snippy --cpus 64 --mincov 1 --report --outdir ./Results2/SRR2584863/ --ref ./Reference/Ecoli_genbank.gb --R1 ./Reads/SRR2584863_1.trim.sub.fastq --R2 ./Reads/SRR2584863_2.trim.sub.fastq
+
+### samtools faidx reference/ref.fa
+
+
+### bwa index reference/ref.fa
+
+[bwa_index] Pack FASTA... 0.03 sec
+[bwa_index] Construct BWT for the packed sequence...
+[bwa_index] 1.39 seconds elapse.
+[bwa_index] Update BWT... 0.02 sec
+[bwa_index] Pack forward-only FASTA... 0.02 sec
+[bwa_index] Construct SA from BWT and Occ... 0.35 sec
+[main] Version: 0.7.18-r1243-dirty
+[main] CMD: bwa index reference/ref.fa
+[main] Real time: 4.031 sec; CPU: 1.816 sec
+
+### mkdir -p reference/genomes && cp -f reference/ref.fa reference/genomes/ref.fa
+
+
+### ln -sf reference/ref.fa .
+
+
+### ln -sf reference/ref.fa.fai .
+
+
+### mkdir -p reference/ref && gzip -c reference/ref.gff > reference/ref/genes.gff.gz
+
+
+### snpEff build -c reference/snpeff.config -dataDir . -gff3 ref
+
+WARNING: All frames are zero! This seems rather odd, please check that 'frame' information in your 'genes' file is accurate.
+
+### bwa mem  -Y -M -R '@RG\tID:SRR2584863\tSM:SRR2584863' -t 64 reference/ref.fa /home4/m.kayani4/Masood/Reads/SRR2584863_1.trim.sub.fastq /home4/m.kayani4/Masood/Reads/SRR2584863_2.trim.sub.fastq | samclip --max 10 --ref reference/ref.fa.fai | samtools sort -n -l 0 -T /tmp --threads 31 -m 250M | samtools fixmate -m --threads 31 - - | samtools sort -l 0 -T /tmp --threads 31 -m 250M | samtools markdup -T /tmp --threads 31 -r -s - - > snps.bam
+
+COMMAND: samtools markdup -T /tmp --threads 31 -r -s - -
+READ: 347030
+WRITTEN: 346069
+EXCLUDED: 156
+EXAMINED: 346874
+PAIRED: 344130
+SINGLE: 2744
+DUPLICATE PAIR: 558
+DUPLICATE SINGLE: 403
+DUPLICATE PAIR OPTICAL: 0
+DUPLICATE SINGLE OPTICAL: 0
+DUPLICATE NON PRIMARY: 0
+DUPLICATE NON PRIMARY OPTICAL: 0
+DUPLICATE PRIMARY TOTAL: 961
+DUPLICATE TOTAL: 961
+ESTIMATED_LIBRARY_SIZE: 53000629
+
+
+### samtools index snps.bam
+
+
+### fasta_generate_regions.py reference/ref.fa.fai 37063 > reference/ref.txt
+
+
+### freebayes-parallel reference/ref.txt 64 -p 2 -P 0 -C 2 -F 0.05 --min-coverage 1 --min-repeat-entropy 1.0 -q 13 -m 60 --strict-vcf   -f reference/ref.fa snps.bam > snps.raw.vcf
+
+
+### bcftools view --include 'FMT/GT="1/1" && QUAL>=100 && FMT/DP>=1 && (FMT/AO)/(FMT/DP)>=0' snps.raw.vcf  | vt normalize -r reference/ref.fa - | bcftools annotate --remove '^INFO/TYPE,^INFO/DP,^INFO/RO,^INFO/AO,^INFO/AB,^FORMAT/GT,^FORMAT/DP,^FORMAT/RO,^FORMAT/AO,^FORMAT/QR,^FORMAT/QA,^FORMAT/GL' > snps.filt.vcf
+
+
+### snpEff ann -noLog -noStats -no-downstream -no-upstream -no-utr -c reference/snpeff.config -dataDir . ref snps.filt.vcf > snps.vcf
+
+
+### /home4/m.kayani4/miniforgeNew/envs/snippy/bin/snippy-vcf_to_tab --gff reference/ref.gff --ref reference/ref.fa --vcf snps.vcf > snps.tab
+
+Loading reference: reference/ref.fa
+Loaded 1 sequences.
+Loading features: reference/ref.gff
+Parsing variants: snps.vcf
+Converted 20 SNPs to TAB format.
+
+### /home4/m.kayani4/miniforgeNew/envs/snippy/bin/snippy-vcf_extract_subs snps.filt.vcf > snps.subs.vcf
+
+
+### bcftools convert -Oz -o snps.vcf.gz snps.vcf
+
+
+### bcftools index -f snps.vcf.gz
+
+
+### bcftools consensus --sample SRR2584863 -f reference/ref.fa -o snps.consensus.fa snps.vcf.gz
+
+Applied 20 variants
+
+### bcftools convert -Oz -o snps.subs.vcf.gz snps.subs.vcf
+
+
+### bcftools index -f snps.subs.vcf.gz
+
+
+### bcftools consensus --sample SRR2584863 -f reference/ref.fa -o snps.consensus.subs.fa snps.subs.vcf.gz
+
+Applied 16 variants
+
+### rm -f snps.subs.vcf.gz snps.subs.vcf.gz.csi snps.subs.vcf.gz.tbi
+
+
+### samtools view -h -q 60 snps.bam | samtools sort -l 0 -T /tmp --threads 31 -m 250M > /tmp/snippy.721857.Q60.bam
+
+[bam_sort_core] merging from 0 files and 31 in-memory blocks...
+
+### samtools index /tmp/snippy.721857.Q60.bam
+
+
+### /home4/m.kayani4/miniforgeNew/envs/snippy/bin/snippy-vcf_report --cpus 64 --bam /tmp/snippy.721857.Q60.bam --ref reference/ref.fa --vcf snps.vcf > snps.report.txt
+
+Parsing: snps.vcf
+Running: parallel -j 64 -k -a /tmp/q2MPmkbz_O
+
+### rm -f /tmp/snippy.721857.Q60.bam /tmp/snippy.721857.Q60.bam.bai
+

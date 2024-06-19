@@ -1,0 +1,21 @@
+CHROM,POS,TYPE,REF,ALT,EVIDENCE,FTYPE,STRAND,NT_POS,AA_POS,EFFECT,LOCUS_TAG,GENE,PRODUCT
+CP000819,9972,snp,T,G,G:4 T:0,CDS,-,521/567,174/188,missense_variant c.521A>C p.Asn174Thr,ECB_00010,yaaH,conserved inner membrane protein associated with acetate transport
+CP000819,281923,snp,G,T,T:10 G:0
+CP000819,433359,ins,C,CT,CT:12 C:0
+CP000819,473901,ins,C,CCG,CCG:9 C:0,CDS,-,1404/1677,468/558,frameshift_variant c.1403_1404dupCG p.Ala469fs,ECB_00429,ybaL,predicted transporter with NAD(P)-binding Rossmann-fold domain
+CP000819,648692,snp,C,T,T:10 C:0,CDS,-,206/1113,69/370,missense_variant c.206G>A p.Arg69His,ECB_00603,mrdB,cell wall shape-determining protein
+CP000819,1331794,snp,C,A,A:10 C:0,CDS,+,2375/2598,792/865,missense_variant c.2375C>A p.Thr792Lys,ECB_01250,topA,DNA topoisomerase I
+CP000819,1733343,snp,G,A,A:11 G:0,CDS,+,379/1413,127/470,missense_variant c.379G>A p.Asp127Asn,ECB_01645,pykF,pyruvate kinase
+CP000819,2333538,ins,A,AT,AT:7 A:0
+CP000819,2446984,snp,A,C,C:20 A:0
+CP000819,2665639,snp,A,T,T:19 A:0,CDS,-,299/348,100/115,missense_variant c.299T>A p.Leu100Gln,ECB_02495,rplS,50S ribosomal protein L19
+CP000819,2999330,snp,G,A,A:16 G:0
+CP000819,3339313,snp,A,C,C:10 A:0,CDS,+,152/297,51/98,missense_variant c.152A>C p.Tyr51Ser,ECB_03119,fis,DNA-binding protein Fis
+CP000819,3401754,snp,C,A,A:14 C:0,CDS,-,233/471,78/156,missense_variant c.233G>T p.Arg78Leu,ECB_03192,rpsG,30S ribosomal protein S7
+CP000819,3481820,snp,A,G,G:9 A:0,CDS,+,136/2706,46/901,missense_variant c.136A>G p.Thr46Ala,ECB_03270,malT,transcriptional regulator MalT
+CP000819,3488669,snp,A,C,C:13 A:0,CDS,-,538/759,180/252,missense_variant c.538T>G p.Ser180Ala,ECB_03274,glpR,DNA-binding transcriptional repressor
+CP000819,3909807,snp,G,T,T:10 G:0
+CP000819,4100183,snp,A,G,G:16 A:0,CDS,-,1048/1332,350/443,missense_variant c.1048T>C p.Ser350Pro,ECB_03816,hslU,ATP-dependent protease ATP-binding subunit
+CP000819,4201958,snp,A,C,C:11 A:0,CDS,-,602/825,201/274,missense_variant c.602T>G p.Leu201Arg,ECB_03890,iclR,DNA-binding transcriptional repressor
+CP000819,4431393,del,TGG,T,T:10 TGG:0,CDS,+,3526/3780,1176/1259,frameshift_variant c.3526_3527delGG p.Gly1176fs,ECB_04092,ytfN,hypothetical protein
+CP000819,4616538,snp,A,C,C:9 A:0,CDS,+,1010/1233,337/410,missense_variant c.1010A>C p.Tyr337Ser,ECB_04266,nadR,nicotinamide-nucleotide adenylyltransferase
